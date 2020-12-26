@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+// import logo from './logo.svg';
+import Navbar from "./navbar";
+import AddUser from "./AddUser";
+import Test from "./test";
+import Logged from "./log";
+// import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    list: [
+      { name: "Hadeer", age: 25, gender: "female", id: 1 },
+      { name: "Mohamed", age: 20, gender: "male", id: 2 },
+      { name: "Ola", age: 50, gender: "female", id: 3 },
+      { name: "Ahmed", age: 30, gender: "male", id: 4 },
+    ],
+  };
+
+  addUser = (user) => {
+    let newList = [...this.state.list, user];
+    this.setState({
+      list: newList
+    });
+  };
+  deleteUser = (id) => {
+    let newList = this.state.list.filter((user) => user.id !== id);
+    this.setState({
+      list: newList
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        {/* <Navbar /> */}
+        <AddUser adduser={this.addUser} />
+        <Test list={this.state.list} removeUser={this.deleteUser} />
+        <Logged />
+      </div>
+    );
+  }
 }
 
 export default App;
