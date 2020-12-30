@@ -6,7 +6,7 @@ import Test from "./test";
 import Logged from "./log";
 import styled from 'styled-components';
 // import Radium from 'radium';
-// import './App.css';
+import classes from'./app.module.css';
 const StyledButton=styled.button`
 background-color:pink;
 color:blue;
@@ -42,15 +42,17 @@ class App extends Component {
       list: newList
     });
   };
-
+ 
   render() {
+    {console.log(classes)}
     return (
-      <div className="App">
+      <div className={[classes.bgred,classes.bgindgo].join(" ")}>
         {/* <Navbar /> */}
         <AddUser adduser={this.addUser} />
-        <Test list={this.state.list} removeUser={this.deleteUser} />
+        <Test  list={this.state.list} removeUser={this.deleteUser} />
         <Logged />
         <StyledButton>Hello style!</StyledButton>
+
 
 
       </div>
