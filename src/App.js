@@ -4,7 +4,21 @@ import Navbar from "./navbar";
 import AddUser from "./AddUser";
 import Test from "./test";
 import Logged from "./log";
+import styled from 'styled-components';
+// import Radium from 'radium';
 // import './App.css';
+const StyledButton=styled.button`
+background-color:pink;
+color:blue;
+border:none;
+border-radius:5px;
+padding:5px;
+transition; all  0.35s linear;
+margin-bottom:10px;
+&:hover{
+  background-color:red;
+}
+`
 
 class App extends Component {
   state = {
@@ -36,6 +50,9 @@ class App extends Component {
         <AddUser adduser={this.addUser} />
         <Test list={this.state.list} removeUser={this.deleteUser} />
         <Logged />
+        <StyledButton>Hello style!</StyledButton>
+
+
       </div>
     );
   }
